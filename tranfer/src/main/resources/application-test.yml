@@ -1,0 +1,26 @@
+server:
+  port: 5001
+
+logging:
+  config: classpath:log4j2-test.xml
+
+
+spring:
+#redis config
+  redis:
+    host: r-2zea3c4d6318ede4pd.redis.rds.aliyuncs.com
+    port: 6379
+    password: Token2Info4Spider
+  datasource:
+    dbA:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://test1/exam?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: hehehe
+    dbB:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://test2/exam?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: hehehe123
+
+retry.second.count = 120*1000

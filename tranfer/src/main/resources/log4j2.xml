@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration>
+    <Appenders>
+        <RollingFile name="RollingFile" fileName="${sys:logPath}/transfer.log"
+                     filePattern="${sys:logPath}/transfer_%d{MM-dd-yyyy}.log">
+            <PatternLayout>
+                <Pattern>%d{dd HH:mm:ss} [%-5p] [%.15t] %c{1.} : %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <DefaultRolloverStrategy max="3"/>
+        </RollingFile>
+        <RollingFile name="RollingFileError" fileName="${sys:logPath}/transfer.error"
+                     filePattern="${sys:logPath}/transfer_%d{MM-dd-yyyy}.error">
+            <ThresholdFilter level="ERROR"/>
+            <PatternLayout>
+                <Pattern>%d{dd HH:mm:ss} [%-5p] [%.15t] %c{1.} : %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="RollingFileError"/>
+        </Root>
+    </Loggers>
+</Configuration>
